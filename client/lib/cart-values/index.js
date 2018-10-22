@@ -317,6 +317,10 @@ function getLocationOrigin( l ) {
 	return l.protocol + '//' + l.hostname + ( l.port ? ':' + l.port : '' );
 }
 
+export function hasPendingPayment( cart ) {
+	return ( cart && cart.has_pending_payment ) || false;
+}
+
 export {
 	applyCoupon,
 	removeCoupon,
@@ -343,4 +347,5 @@ export default {
 	cartItems,
 	emptyCart,
 	isPaymentMethodEnabled,
+	hasPendingPayment,
 };
