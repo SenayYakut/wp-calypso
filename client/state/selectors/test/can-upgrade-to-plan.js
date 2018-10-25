@@ -10,6 +10,7 @@ import { includes } from 'lodash';
  */
 import canUpgradeToPlan from 'state/selectors/can-upgrade-to-plan';
 import {
+	PLAN_BUSINESS_MONTHLY,
 	PLAN_BUSINESS,
 	PLAN_BUSINESS_2_YEARS,
 	PLAN_FREE,
@@ -106,6 +107,8 @@ describe( 'canUpgradeToPlan', () => {
 
 	test( 'should return true from monthly plans to yearly plans', () => {
 		[
+			[ PLAN_BUSINESS_MONTHLY, PLAN_BUSINESS ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_BUSINESS_2_YEARS ],
 			[ PLAN_JETPACK_PERSONAL_MONTHLY, PLAN_JETPACK_PERSONAL ],
 			[ PLAN_JETPACK_PREMIUM_MONTHLY, PLAN_JETPACK_PREMIUM ],
 			[ PLAN_JETPACK_BUSINESS_MONTHLY, PLAN_JETPACK_BUSINESS ],
@@ -118,6 +121,8 @@ describe( 'canUpgradeToPlan', () => {
 
 	test( 'should return false from yearly plans to monthly plans', () => {
 		[
+			[ PLAN_BUSINESS, PLAN_BUSINESS_MONTHLY ],
+			[ PLAN_BUSINESS_2_YEARS, PLAN_BUSINESS_MONTHLY ],
 			[ PLAN_JETPACK_PERSONAL, PLAN_JETPACK_PERSONAL_MONTHLY ],
 			[ PLAN_JETPACK_PREMIUM, PLAN_JETPACK_PREMIUM_MONTHLY ],
 			[ PLAN_JETPACK_BUSINESS, PLAN_JETPACK_BUSINESS_MONTHLY ],
@@ -160,6 +165,10 @@ describe( 'canUpgradeToPlan', () => {
 			[ PLAN_BUSINESS, PLAN_BLOGGER ],
 			[ PLAN_BUSINESS, PLAN_PERSONAL ],
 			[ PLAN_BUSINESS, PLAN_PREMIUM ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_FREE ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_BLOGGER ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PERSONAL ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PREMIUM ],
 			[ PLAN_BUSINESS_2_YEARS, PLAN_FREE ],
 			[ PLAN_BUSINESS_2_YEARS, PLAN_BLOGGER ],
 			[ PLAN_BUSINESS_2_YEARS, PLAN_BLOGGER_2_YEARS ],
@@ -227,6 +236,12 @@ describe( 'canUpgradeToPlan', () => {
 		} );
 
 		[
+			[ PLAN_BUSINESS_MONTHLY, PLAN_BLOGGER, 'simple' ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_BLOGGER, 'atomic' ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PERSONAL, 'simple' ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PERSONAL, 'atomic' ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PREMIUM, 'simple' ],
+			[ PLAN_BUSINESS_MONTHLY, PLAN_PREMIUM, 'atomic' ],
 			[ PLAN_BUSINESS, PLAN_BLOGGER, 'simple' ],
 			[ PLAN_BUSINESS, PLAN_BLOGGER, 'atomic' ],
 			[ PLAN_BUSINESS, PLAN_PERSONAL, 'simple' ],

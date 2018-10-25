@@ -15,6 +15,7 @@ import { identity } from 'lodash';
  */
 import { WechatPaymentBox } from '../wechat-payment-box';
 import {
+	PLAN_BUSINESS_MONTHLY,
 	PLAN_BUSINESS,
 	PLAN_BUSINESS_2_YEARS,
 	PLAN_PREMIUM,
@@ -105,7 +106,7 @@ describe( 'WechatPaymentBox', () => {
 		expect( wrapper.contains( <TermsOfService /> ) );
 	} );
 
-	const businessPlans = [ PLAN_BUSINESS, PLAN_BUSINESS_2_YEARS ];
+	const businessPlans = [ PLAN_BUSINESS_MONTHLY, PLAN_BUSINESS, PLAN_BUSINESS_2_YEARS ];
 
 	businessPlans.forEach( product_slug => {
 		test( 'should render PaymentChatButton if any WP.com business plan is in the cart', () => {
