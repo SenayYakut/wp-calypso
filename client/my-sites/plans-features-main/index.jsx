@@ -41,7 +41,7 @@ import { getSiteSlug } from 'state/sites/selectors';
 import { selectSiteId as selectHappychatSiteId } from 'state/help/actions';
 
 export class PlansFeaturesMain extends Component {
-	componentWillUpdate( nextProps ) {
+	componentDidUpdate( prevProps ) {
 		/**
 		 * Happychat does not update with the selected site right now :(
 		 * This ensures that Happychat groups are correct in case we switch sites while on the plans
@@ -50,9 +50,9 @@ export class PlansFeaturesMain extends Component {
 		 * @TODO: When happychat correctly handles site switching, remove selectHappychatSiteId action.
 		 */
 		const { siteId } = this.props;
-		const { siteId: nextSiteId } = nextProps;
-		if ( siteId !== nextSiteId && nextSiteId ) {
-			this.props.selectHappychatSiteId( nextSiteId );
+		const { siteId: prevSiteId } = prevProps;
+		if ( siteId && siteId !== prevSiteId ) {
+			this.props.selectHappychatSiteId( siteId );
 		}
 	}
 
