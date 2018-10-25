@@ -111,12 +111,18 @@ export class PlansFeaturesMain extends Component {
 		}
 
 		const group = displayJetpackPlans ? GROUP_JETPACK : GROUP_WPCOM;
+		// In WPCOM, only the business plan is available in monthly term;
+		const businessPlanTerm = term;
+		if ( group === GROUP_WPCOM && term === TERM_MONTHLY ) {
+			term = TERM_ANNUALLY;
+		}
+
 		const personalPlan = findPlansKeys( { group, term, type: TYPE_PERSONAL } )[ 0 ];
 		const plans = [
 			findPlansKeys( { group, type: TYPE_FREE } )[ 0 ],
 			personalPlan,
 			findPlansKeys( { group, term, type: TYPE_PREMIUM } )[ 0 ],
-			findPlansKeys( { group, term, type: TYPE_BUSINESS } )[ 0 ],
+			findPlansKeys( { group, term: businessPlanTerm, type: TYPE_BUSINESS } )[ 0 ],
 		];
 
 		if ( hideFreePlan ) {
