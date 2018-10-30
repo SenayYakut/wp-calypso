@@ -80,14 +80,14 @@ class ImportURLStepComponent extends Component {
 				themeSlugWithRepo: 'pub/radcliffe-2',
 			} );
 
+			goToNextStep();
+
 			if ( urlInputValue ) {
 				loadmShotsPreview( {
 					url: urlInputValue,
-					maxRetries: 1,
+					currentRetries: 1,
 				} ).catch( noop ); // We don't care about the error, this is just a prefetch
 			}
-
-			goToNextStep();
 		}
 
 		if ( isLoading !== prevProps.isLoading ) {
