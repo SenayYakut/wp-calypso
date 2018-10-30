@@ -14,6 +14,9 @@
 
   &__option-container {
     flex-basis: calc(50% - 10px);
+	  &:nth-child( n+3 ) {
+		  margin-top: 20px;
+	  }
 
     @include breakpoint('<960px') {
       flex-basis: calc(100%);
