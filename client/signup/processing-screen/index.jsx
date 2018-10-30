@@ -38,7 +38,7 @@ export class SignupProcessingScreen extends Component {
 		hasPaidSubscription: false,
 	};
 
-	componentWillReceiveProps( nextProps ) {
+	UNSAFE_componentWillReceiveProps( nextProps ) {
 		const dependencies = nextProps.signupDependencies;
 
 		if ( isEmpty( dependencies ) ) {
@@ -304,7 +304,7 @@ export class SignupProcessingScreen extends Component {
 		return (
 			config.isEnabled( 'onboarding-checklist' ) &&
 			'store' !== designType &&
-			[ 'main', 'desktop', 'subdomain' ].includes( this.props.flowName )
+			[ 'main', 'onboarding', 'desktop', 'subdomain' ].includes( this.props.flowName )
 		);
 	}
 
