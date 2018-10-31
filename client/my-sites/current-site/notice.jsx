@@ -8,6 +8,7 @@ import url from 'url';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { localize } from 'i18n-calypso';
+import config from 'config';
 
 /**
  * Internal dependencies
@@ -33,7 +34,7 @@ import TrackComponentView from 'lib/analytics/track-component-view';
 import DomainToPaidPlanNotice from './domain-to-paid-plan-notice';
 import PendingPaymentNotice from './pending-payment-notice';
 
-class SiteNotice extends React.Component {
+export class SiteNotice extends React.Component {
 	static propTypes = {
 		site: PropTypes.object,
 	};
