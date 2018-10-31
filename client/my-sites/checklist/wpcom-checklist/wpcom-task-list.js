@@ -51,8 +51,4 @@ export default class WpcomTaskList {
 	getFirstIncompleteTask() {
 		return this.tasks.find( task => ! task.isCompleted );
 	}
-
-	areAllTasksCompleted() {
-		return ! this.getFirstIncompleteTask();
-	}
 }
